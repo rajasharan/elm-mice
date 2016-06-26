@@ -13857,17 +13857,13 @@ var _jystic$elm_font_awesome$FontAwesome$adn = _jystic$elm_font_awesome$FontAwes
 var _jystic$elm_font_awesome$FontAwesome$adjust = _jystic$elm_font_awesome$FontAwesome_Internal$icon('M896 1440v-1088q-148 0-273 73t-198 198-73 273 73 273 198 198 273 73zm768-544q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z');
 var _jystic$elm_font_awesome$FontAwesome$fa_500px = _jystic$elm_font_awesome$FontAwesome_Internal$icon('M1529 1547l-6 6q-113 114-259 175-154 64-317 64-165 0-317-64-148-63-259-175-113-112-175-258-42-103-54-189-4-28 48-36 51-8 56 20 1 1 1 4 18 90 46 159 50 124 152 226 98 98 226 152 132 56 276 56 143 0 276-56 128-55 225-152l6-6q10-10 25-6 12 3 33 22 36 37 17 58zm-472-615l-66 66 63 63q21 21-7 49-17 17-32 17-10 0-19-10l-62-61-66 66q-5 5-15 5-15 0-31-16l-2-2q-18-15-18-29 0-7 8-17l66-65-66-66q-16-16 14-45 18-18 31-18 6 0 13 5l65 66 65-65q18-17 48 13 27 27 11 44zm471 57q0 118-46 228-45 105-126 186-80 80-187 126t-228 46-228-46-187-126q-82-82-125-186-15-32-15-40h-1q-9-27 43-44 50-16 60 12 37 99 97 167h1v-341q3-136 102-232 105-103 253-103 147 0 251 103t104 249q0 147-104.5 251t-250.5 104q-58 0-112-16-28-11-13-61 16-51 44-43l14 3q14 3 32.5 6t30.5 3q104 0 176-71.5t72-174.5q0-101-72-171-71-71-175-71-107 0-178 80-64 72-64 160v413q110 67 242 67 96 0 185-36.5t156-103.5 103.5-155 36.5-183q0-198-141-339-140-140-339-140-200 0-340 140-53 53-77 87l-2 2q-8 11-13 15.5t-21.5 9.5-38.5-3q-21-5-36.5-16.5t-15.5-26.5v-680q0-15 10.5-26.5t27.5-11.5h877q30 0 30 55t-30 55h-811v483h1q40-42 102-84t108-61q109-46 231-46 121 0 228 46t187 126q81 81 126 186 46 112 46 229zm-31-581q9 8 9 18t-5.5 18-16.5 21q-26 26-39 26-9 0-16-7-106-91-207-133-128-56-276-56-133 0-262 49-27 10-45-37-9-25-8-38 3-16 16-20 130-57 299-57 164 0 316 64 137 58 235 152z');
 
-var _rajasharan$elm_freehand_drawing$Types$Model = F7(
-	function (a, b, c, d, e, f, g) {
-		return {id: a, shape: b, size: c, moving: d, server: e, clients: f, ext: g};
+var _rajasharan$elm_freehand_drawing$Types$Model = F5(
+	function (a, b, c, d, e) {
+		return {id: a, position: b, size: c, server: d, clients: e};
 	});
 var _rajasharan$elm_freehand_drawing$Types$Client = F2(
 	function (a, b) {
-		return {id: a, shape: b};
-	});
-var _rajasharan$elm_freehand_drawing$Types$ExternalProps = F4(
-	function (a, b, c, d) {
-		return {onHoverServer: a, onHoverClear: b, showServerModal: c, transientServer: d};
+		return {id: a, position: b};
 	});
 var _rajasharan$elm_freehand_drawing$Types$SocketMsg = F4(
 	function (a, b, c, d) {
@@ -13875,19 +13871,6 @@ var _rajasharan$elm_freehand_drawing$Types$SocketMsg = F4(
 	});
 var _rajasharan$elm_freehand_drawing$Types$Touch = {ctor: 'Touch'};
 var _rajasharan$elm_freehand_drawing$Types$Mouse = {ctor: 'Mouse'};
-var _rajasharan$elm_freehand_drawing$Types$EnterKey = function (a) {
-	return {ctor: 'EnterKey', _0: a};
-};
-var _rajasharan$elm_freehand_drawing$Types$CloseServerModal = {ctor: 'CloseServerModal'};
-var _rajasharan$elm_freehand_drawing$Types$SaveServer = {ctor: 'SaveServer'};
-var _rajasharan$elm_freehand_drawing$Types$SaveTransientServer = function (a) {
-	return {ctor: 'SaveTransientServer', _0: a};
-};
-var _rajasharan$elm_freehand_drawing$Types$ShowServerModal = {ctor: 'ShowServerModal'};
-var _rajasharan$elm_freehand_drawing$Types$ClearAllDrawings = {ctor: 'ClearAllDrawings'};
-var _rajasharan$elm_freehand_drawing$Types$CancelHover = {ctor: 'CancelHover'};
-var _rajasharan$elm_freehand_drawing$Types$OnHoverClear = {ctor: 'OnHoverClear'};
-var _rajasharan$elm_freehand_drawing$Types$OnHoverServer = {ctor: 'OnHoverServer'};
 var _rajasharan$elm_freehand_drawing$Types$Listen = function (a) {
 	return {ctor: 'Listen', _0: a};
 };
@@ -13902,39 +13885,10 @@ var _rajasharan$elm_freehand_drawing$Types$Error = function (a) {
 var _rajasharan$elm_freehand_drawing$Types$Window = function (a) {
 	return {ctor: 'Window', _0: a};
 };
-var _rajasharan$elm_freehand_drawing$Types$ClearAll = {ctor: 'ClearAll'};
 var _rajasharan$elm_freehand_drawing$Types$Cancel = {ctor: 'Cancel'};
 var _rajasharan$elm_freehand_drawing$Types$Point = {ctor: 'Point'};
 var _rajasharan$elm_freehand_drawing$Types$Initial = {ctor: 'Initial'};
 
-var _rajasharan$elm_freehand_drawing$Utils$modifyShape = F2(
-	function (point, shape) {
-		var _p0 = shape;
-		if (_p0.ctor === '::') {
-			if (_p0._0.ctor === '::') {
-				return A2(
-					_elm_lang$core$List_ops['::'],
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						_elm_lang$core$Native_List.fromArray(
-							[point, _p0._0._0]),
-						_p0._0._1),
-					_p0._1);
-			} else {
-				return A2(
-					_elm_lang$core$List_ops['::'],
-					_elm_lang$core$Native_List.fromArray(
-						[point]),
-					_p0._1);
-			}
-		} else {
-			return _elm_lang$core$Native_List.fromArray(
-				[
-					_elm_lang$core$Native_List.fromArray(
-					[point])
-				]);
-		}
-	});
 var _rajasharan$elm_freehand_drawing$Utils$nop = _elm_lang$core$Platform_Cmd$none;
 var _rajasharan$elm_freehand_drawing$Utils$print = function (str) {
 	var s = A2(_elm_lang$core$Debug$log, '', str);
@@ -13952,9 +13906,9 @@ var _rajasharan$elm_freehand_drawing$Utils$convertMouseToCanvasCoord = F2(
 	});
 var _rajasharan$elm_freehand_drawing$Utils$denormalizePoint = F2(
 	function (size, point) {
-		var _p1 = point;
-		var x = _p1._0;
-		var y = _p1._1;
+		var _p0 = point;
+		var x = _p0._0;
+		var y = _p0._1;
 		var h = _elm_lang$core$Basics$toFloat(size.height) / 2;
 		var y$ = h * y;
 		var w = _elm_lang$core$Basics$toFloat(size.width) / 2;
@@ -13963,9 +13917,9 @@ var _rajasharan$elm_freehand_drawing$Utils$denormalizePoint = F2(
 	});
 var _rajasharan$elm_freehand_drawing$Utils$normalizePoint = F2(
 	function (size, point) {
-		var _p2 = point;
-		var x = _p2._0;
-		var y = _p2._1;
+		var _p1 = point;
+		var x = _p1._0;
+		var y = _p1._1;
 		var h = _elm_lang$core$Basics$toFloat(size.height) / 2;
 		var y$ = y / h;
 		var w = _elm_lang$core$Basics$toFloat(size.width) / 2;
@@ -13979,128 +13933,6 @@ var _rajasharan$elm_freehand_drawing$Utils$setSize = F2(
 			{size: size});
 	});
 
-var _rajasharan$elm_freehand_drawing$External$closeServerModal = function (model) {
-	var closeServer = function (ext) {
-		return _elm_lang$core$Native_Utils.update(
-			ext,
-			{showServerModal: false});
-	};
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			ext: closeServer(model.ext)
-		});
-};
-var _rajasharan$elm_freehand_drawing$External$saveServer = function (model) {
-	var close = function (ext) {
-		return _elm_lang$core$Native_Utils.update(
-			ext,
-			{showServerModal: false});
-	};
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			server: A2(_elm_lang$core$Basics_ops['++'], 'ws://', model.ext.transientServer),
-			ext: close(model.ext)
-		});
-};
-var _rajasharan$elm_freehand_drawing$External$enterKeyPressed = F2(
-	function (keyCode, model) {
-		return _elm_lang$core$Native_Utils.eq(keyCode, 13) ? _rajasharan$elm_freehand_drawing$External$saveServer(model) : model;
-	});
-var _rajasharan$elm_freehand_drawing$External$saveTransientServer = F2(
-	function (server, model) {
-		var saveTransient = F2(
-			function (server, ext) {
-				return _elm_lang$core$Native_Utils.update(
-					ext,
-					{transientServer: server});
-			});
-		return _elm_lang$core$Native_Utils.update(
-			model,
-			{
-				ext: A2(saveTransient, server, model.ext)
-			});
-	});
-var _rajasharan$elm_freehand_drawing$External$showServerModal = function (model) {
-	var showServer = function (ext) {
-		return _elm_lang$core$Native_Utils.update(
-			ext,
-			{showServerModal: true, transientServer: ''});
-	};
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			ext: showServer(model.ext)
-		});
-};
-var _rajasharan$elm_freehand_drawing$External$clearAllClients = function (clients) {
-	return A2(
-		_elm_lang$core$List$map,
-		function (c) {
-			return _elm_lang$core$Native_Utils.update(
-				c,
-				{
-					shape: _elm_lang$core$Native_List.fromArray(
-						[])
-				});
-		},
-		clients);
-};
-var _rajasharan$elm_freehand_drawing$External$clearAll = function (model) {
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			shape: _elm_lang$core$Native_List.fromArray(
-				[]),
-			clients: _rajasharan$elm_freehand_drawing$External$clearAllClients(model.clients)
-		});
-};
-var _rajasharan$elm_freehand_drawing$External$cancelHover = function (model) {
-	var cancel = function (ext) {
-		return _elm_lang$core$Native_Utils.update(
-			ext,
-			{onHoverServer: false, onHoverClear: false});
-	};
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			ext: cancel(model.ext)
-		});
-};
-var _rajasharan$elm_freehand_drawing$External$onHoverClear = function (model) {
-	var onHover = function (ext) {
-		return _elm_lang$core$Native_Utils.update(
-			ext,
-			{onHoverClear: true});
-	};
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			ext: onHover(model.ext)
-		});
-};
-var _rajasharan$elm_freehand_drawing$External$onHoverServer = function (model) {
-	var onHover = function (ext) {
-		return _elm_lang$core$Native_Utils.update(
-			ext,
-			{onHoverServer: true});
-	};
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			ext: onHover(model.ext)
-		});
-};
-
-var _rajasharan$elm_freehand_drawing$Clients$replacePointInClient = F2(
-	function (point, client) {
-		return _elm_lang$core$Native_Utils.update(
-			client,
-			{
-				shape: A2(_rajasharan$elm_freehand_drawing$Utils$modifyShape, point, client.shape)
-			});
-	});
 var _rajasharan$elm_freehand_drawing$Clients$modifyClient = F3(
 	function (id, point, clients) {
 		var c$ = A2(
@@ -14113,11 +13945,7 @@ var _rajasharan$elm_freehand_drawing$Clients$modifyClient = F3(
 		if (_p0.ctor === 'Nothing') {
 			return A2(
 				_elm_lang$core$List_ops['::'],
-				{
-					id: id,
-					shape: _elm_lang$core$Native_List.fromArray(
-						[])
-				},
+				{id: id, position: point},
 				clients);
 		} else {
 			return A3(
@@ -14125,7 +13953,9 @@ var _rajasharan$elm_freehand_drawing$Clients$modifyClient = F3(
 				function (c) {
 					return _elm_lang$core$Native_Utils.eq(c.id, id);
 				},
-				A2(_rajasharan$elm_freehand_drawing$Clients$replacePointInClient, point, _p0._0),
+				_elm_lang$core$Native_Utils.update(
+					_p0._0,
+					{position: point}),
 				clients);
 		}
 	});
@@ -14141,7 +13971,16 @@ var _rajasharan$elm_freehand_drawing$Clients$addPointToClient = F4(
 				clients: A3(_rajasharan$elm_freehand_drawing$Clients$modifyClient, id, point, model.clients)
 			});
 	});
-var _rajasharan$elm_freehand_drawing$Clients$resetClient = F2(
+var _rajasharan$elm_freehand_drawing$Clients$deleteClient = F2(
+	function (id, clients) {
+		return A2(
+			_elm_community$list_extra$List_Extra$deleteIf,
+			function (c) {
+				return _elm_lang$core$Native_Utils.eq(c.id, id);
+			},
+			clients);
+	});
+var _rajasharan$elm_freehand_drawing$Clients$addClient = F2(
 	function (id, clients) {
 		var c$ = A2(
 			_elm_community$list_extra$List_Extra$find,
@@ -14155,25 +13994,11 @@ var _rajasharan$elm_freehand_drawing$Clients$resetClient = F2(
 				_elm_lang$core$List_ops['::'],
 				{
 					id: id,
-					shape: _elm_lang$core$Native_List.fromArray(
-						[])
+					position: {ctor: '_Tuple2', _0: -9999.0, _1: -9999.0}
 				},
 				clients);
 		} else {
-			return A3(
-				_elm_community$list_extra$List_Extra$replaceIf,
-				function (c) {
-					return _elm_lang$core$Native_Utils.eq(c.id, id);
-				},
-				{
-					id: id,
-					shape: A2(
-						_elm_lang$core$List_ops['::'],
-						_elm_lang$core$Native_List.fromArray(
-							[]),
-						_p1._0.shape)
-				},
-				clients);
+			return clients;
 		}
 	});
 var _rajasharan$elm_freehand_drawing$Clients$drawClient$ = F2(
@@ -14184,19 +14009,17 @@ var _rajasharan$elm_freehand_drawing$Clients$drawClient$ = F2(
 				return _elm_lang$core$Native_Utils.update(
 					model,
 					{
-						clients: A2(_rajasharan$elm_freehand_drawing$Clients$resetClient, socket.id, model.clients),
+						clients: A2(_rajasharan$elm_freehand_drawing$Clients$addClient, socket.id, model.clients),
 						id: socket.id
 					});
 			case 'Cancel':
 				return _elm_lang$core$Native_Utils.update(
 					model,
 					{
-						clients: A2(_rajasharan$elm_freehand_drawing$Clients$resetClient, socket.id, model.clients)
+						clients: A2(_rajasharan$elm_freehand_drawing$Clients$deleteClient, socket.id, model.clients)
 					});
-			case 'Point':
-				return A4(_rajasharan$elm_freehand_drawing$Clients$addPointToClient, socket.id, socket.x, socket.y, model);
 			default:
-				return _rajasharan$elm_freehand_drawing$External$clearAll(model);
+				return A4(_rajasharan$elm_freehand_drawing$Clients$addPointToClient, socket.id, socket.x, socket.y, model);
 		}
 	});
 var _rajasharan$elm_freehand_drawing$Clients$drawClient = F2(
@@ -14210,24 +14033,12 @@ var _rajasharan$elm_freehand_drawing$Clients$drawClient = F2(
 		}
 	});
 
-var _rajasharan$elm_freehand_drawing$Decoders$clearAll = A2(
-	_elm_lang$core$Json_Decode$andThen,
-	_elm_lang$core$Json_Decode$string,
-	function (s) {
-		var _p0 = s;
-		if (_p0 === 'clearAll') {
-			return _elm_lang$core$Json_Decode$succeed(_rajasharan$elm_freehand_drawing$Types$ClearAll);
-		} else {
-			return _elm_lang$core$Json_Decode$fail(
-				A2(_elm_lang$core$Basics_ops['++'], 'Server sent wrong kind: ', s));
-		}
-	});
 var _rajasharan$elm_freehand_drawing$Decoders$cancel = A2(
 	_elm_lang$core$Json_Decode$andThen,
 	_elm_lang$core$Json_Decode$string,
 	function (s) {
-		var _p1 = s;
-		if (_p1 === 'cancel') {
+		var _p0 = s;
+		if (_p0 === 'cancel') {
 			return _elm_lang$core$Json_Decode$succeed(_rajasharan$elm_freehand_drawing$Types$Cancel);
 		} else {
 			return _elm_lang$core$Json_Decode$fail(
@@ -14238,8 +14049,8 @@ var _rajasharan$elm_freehand_drawing$Decoders$point = A2(
 	_elm_lang$core$Json_Decode$andThen,
 	_elm_lang$core$Json_Decode$string,
 	function (s) {
-		var _p2 = s;
-		if (_p2 === 'point') {
+		var _p1 = s;
+		if (_p1 === 'point') {
 			return _elm_lang$core$Json_Decode$succeed(_rajasharan$elm_freehand_drawing$Types$Point);
 		} else {
 			return _elm_lang$core$Json_Decode$fail(
@@ -14250,8 +14061,8 @@ var _rajasharan$elm_freehand_drawing$Decoders$initial = A2(
 	_elm_lang$core$Json_Decode$andThen,
 	_elm_lang$core$Json_Decode$string,
 	function (s) {
-		var _p3 = s;
-		if (_p3 === 'initial') {
+		var _p2 = s;
+		if (_p2 === 'initial') {
 			return _elm_lang$core$Json_Decode$succeed(_rajasharan$elm_freehand_drawing$Types$Initial);
 		} else {
 			return _elm_lang$core$Json_Decode$fail(
@@ -14286,13 +14097,6 @@ var _rajasharan$elm_freehand_drawing$Decoders$decodeSocketMsg = function (messag
 					A2(_elm_lang$core$Json_Decode_ops[':='], 'id', _elm_lang$core$Json_Decode$int),
 					A2(_elm_lang$core$Json_Decode_ops[':='], 'kind', _rajasharan$elm_freehand_drawing$Decoders$cancel),
 					_elm_lang$core$Json_Decode$succeed(0),
-					_elm_lang$core$Json_Decode$succeed(0)),
-					A5(
-					_elm_lang$core$Json_Decode$object4,
-					_rajasharan$elm_freehand_drawing$Types$SocketMsg,
-					A2(_elm_lang$core$Json_Decode_ops[':='], 'id', _elm_lang$core$Json_Decode$int),
-					A2(_elm_lang$core$Json_Decode_ops[':='], 'kind', _rajasharan$elm_freehand_drawing$Decoders$clearAll),
-					_elm_lang$core$Json_Decode$succeed(0),
 					_elm_lang$core$Json_Decode$succeed(0))
 				])));
 };
@@ -14308,15 +14112,12 @@ var _rajasharan$elm_freehand_drawing$Decoders$decodePoint = function (point) {
 			_elm_lang$core$Json_Decode$float,
 			_elm_lang$core$Json_Decode$float),
 		point);
-	var _p4 = result;
-	if (_p4.ctor === 'Ok') {
-		return _elm_lang$core$Maybe$Just(_p4._0);
+	var _p3 = result;
+	if (_p3.ctor === 'Ok') {
+		return _elm_lang$core$Maybe$Just(_p3._0);
 	} else {
 		return _elm_lang$core$Maybe$Nothing;
 	}
-};
-var _rajasharan$elm_freehand_drawing$Decoders$enterKeyDecoder = function (keyCode) {
-	return A2(_elm_lang$core$Json_Decode$map, _rajasharan$elm_freehand_drawing$Types$EnterKey, keyCode);
 };
 var _rajasharan$elm_freehand_drawing$Decoders$touchEndDecoder = _elm_lang$core$Json_Decode$succeed(_rajasharan$elm_freehand_drawing$Types$TouchEnd);
 var _rajasharan$elm_freehand_drawing$Decoders$mouseEndDecoder = _rajasharan$elm_freehand_drawing$Decoders$touchEndDecoder;
@@ -14337,14 +14138,14 @@ var _rajasharan$elm_freehand_drawing$Decoders$touchDecoder = A2(
 	_rajasharan$elm_freehand_drawing$Decoders$mouseDecoder);
 var _rajasharan$elm_freehand_drawing$Decoders$positionDecoder = function (mouseType) {
 	var converter = function (tuple) {
-		var _p5 = tuple;
+		var _p4 = tuple;
 		return {
-			x: _elm_lang$core$Basics$round(_p5._0),
-			y: _elm_lang$core$Basics$round(_p5._1)
+			x: _elm_lang$core$Basics$round(_p4._0),
+			y: _elm_lang$core$Basics$round(_p4._1)
 		};
 	};
-	var _p6 = mouseType;
-	if (_p6.ctor === 'Mouse') {
+	var _p5 = mouseType;
+	if (_p5.ctor === 'Mouse') {
 		return A2(_elm_lang$core$Json_Decode$map, converter, _rajasharan$elm_freehand_drawing$Decoders$mouseDecoder);
 	} else {
 		return A2(_elm_lang$core$Json_Decode$map, converter, _rajasharan$elm_freehand_drawing$Decoders$touchDecoder);
@@ -14410,26 +14211,6 @@ var _rajasharan$elm_freehand_drawing$Encoders$encodeSocketMsg = function (msg) {
 							_1: _elm_lang$core$Json_Encode$float(msg.y)
 						}
 						])));
-		case 'Cancel':
-			return A2(
-				_elm_lang$core$Json_Encode$encode,
-				0,
-				_elm_lang$core$Json_Encode$object(
-					_elm_lang$core$Native_List.fromArray(
-						[
-							{
-							ctor: '_Tuple2',
-							_0: 'id',
-							_1: _elm_lang$core$Json_Encode$int(msg.id)
-						},
-							{
-							ctor: '_Tuple2',
-							_0: 'kind',
-							_1: _elm_lang$core$Json_Encode$string('cancel')
-						},
-							{ctor: '_Tuple2', _0: 'x', _1: _elm_lang$core$Json_Encode$null},
-							{ctor: '_Tuple2', _0: 'y', _1: _elm_lang$core$Json_Encode$null}
-						])));
 		default:
 			return A2(
 				_elm_lang$core$Json_Encode$encode,
@@ -14445,7 +14226,7 @@ var _rajasharan$elm_freehand_drawing$Encoders$encodeSocketMsg = function (msg) {
 							{
 							ctor: '_Tuple2',
 							_0: 'kind',
-							_1: _elm_lang$core$Json_Encode$string('clearAll')
+							_1: _elm_lang$core$Json_Encode$string('cancel')
 						},
 							{ctor: '_Tuple2', _0: 'x', _1: _elm_lang$core$Json_Encode$null},
 							{ctor: '_Tuple2', _0: 'y', _1: _elm_lang$core$Json_Encode$null}
@@ -14473,14 +14254,11 @@ var _rajasharan$elm_freehand_drawing$Init$init = function (hash) {
 		ctor: '_Tuple2',
 		_0: {
 			id: -1,
-			shape: _elm_lang$core$Native_List.fromArray(
-				[]),
+			position: {ctor: '_Tuple2', _0: -99, _1: -99},
 			size: {width: 500, height: 500},
-			moving: false,
 			server: A2(_elm_lang$core$String$dropLeft, 1, hash),
 			clients: _elm_lang$core$Native_List.fromArray(
-				[]),
-			ext: {onHoverServer: false, onHoverClear: false, showServerModal: false, transientServer: ''}
+				[])
 		},
 		_1: A3(_elm_lang$core$Task$perform, _rajasharan$elm_freehand_drawing$Types$Error, _rajasharan$elm_freehand_drawing$Types$Window, _elm_lang$window$Window$size)
 	};
@@ -14496,19 +14274,12 @@ var _rajasharan$elm_freehand_drawing$Subscription$subs = function (model) {
 			]));
 };
 
-var _rajasharan$elm_freehand_drawing$Update$sendClearAll = function (m) {
-	return A2(
-		_rajasharan$elm_freehand_drawing$Subscription$send,
-		m.server,
-		_rajasharan$elm_freehand_drawing$Encoders$encodeSocketMsg(
-			{id: m.id, kind: _rajasharan$elm_freehand_drawing$Types$ClearAll, x: 0, y: 0}));
-};
 var _rajasharan$elm_freehand_drawing$Update$sendCancel = function (m) {
 	return A2(
 		_rajasharan$elm_freehand_drawing$Subscription$send,
 		m.server,
 		_rajasharan$elm_freehand_drawing$Encoders$encodeSocketMsg(
-			{id: m.id, kind: _rajasharan$elm_freehand_drawing$Types$Cancel, x: 0, y: 0}));
+			{id: m.id, kind: _rajasharan$elm_freehand_drawing$Types$Cancel, x: 0.0, y: 0.0}));
 };
 var _rajasharan$elm_freehand_drawing$Update$sendPosition = F2(
 	function (pos, m) {
@@ -14517,49 +14288,12 @@ var _rajasharan$elm_freehand_drawing$Update$sendPosition = F2(
 			A2(_rajasharan$elm_freehand_drawing$Utils$convertMouseToCanvasCoord, pos, m.size));
 		var x = _p0._0;
 		var y = _p0._1;
-		return m.moving ? A2(
+		return A2(
 			_rajasharan$elm_freehand_drawing$Subscription$send,
 			m.server,
 			_rajasharan$elm_freehand_drawing$Encoders$encodeSocketMsg(
-				{id: m.id, kind: _rajasharan$elm_freehand_drawing$Types$Point, x: x, y: y})) : _rajasharan$elm_freehand_drawing$Utils$nop;
+				{id: m.id, kind: _rajasharan$elm_freehand_drawing$Types$Point, x: x, y: y}));
 	});
-var _rajasharan$elm_freehand_drawing$Update$addPointToModel = F2(
-	function (point, model) {
-		return _elm_lang$core$Native_Utils.update(
-			model,
-			{
-				shape: A2(_rajasharan$elm_freehand_drawing$Utils$modifyShape, point, model.shape)
-			});
-	});
-var _rajasharan$elm_freehand_drawing$Update$draw = F2(
-	function (pos, model) {
-		var point = A2(_rajasharan$elm_freehand_drawing$Utils$convertMouseToCanvasCoord, pos, model.size);
-		return model.moving ? A2(_rajasharan$elm_freehand_drawing$Update$addPointToModel, point, model) : model;
-	});
-var _rajasharan$elm_freehand_drawing$Update$stop = function (model) {
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			shape: A2(
-				_elm_lang$core$List_ops['::'],
-				_elm_lang$core$Native_List.fromArray(
-					[]),
-				model.shape),
-			moving: false
-		});
-};
-var _rajasharan$elm_freehand_drawing$Update$start = function (model) {
-	return _elm_lang$core$Native_Utils.update(
-		model,
-		{
-			shape: A2(
-				_elm_lang$core$List_ops['::'],
-				_elm_lang$core$Native_List.fromArray(
-					[]),
-				model.shape),
-			moving: true
-		});
-};
 var _rajasharan$elm_freehand_drawing$Update$update = F2(
 	function (message, model) {
 		var _p1 = message;
@@ -14577,85 +14311,26 @@ var _rajasharan$elm_freehand_drawing$Update$update = F2(
 					_1: _rajasharan$elm_freehand_drawing$Utils$print(_p1._0)
 				};
 			case 'TouchStart':
-				return {
-					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$Update$start(model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
+				return {ctor: '_Tuple2', _0: model, _1: _rajasharan$elm_freehand_drawing$Utils$nop};
 			case 'TouchMove':
-				var _p2 = _p1._0;
 				return {
 					ctor: '_Tuple2',
-					_0: A2(_rajasharan$elm_freehand_drawing$Update$draw, _p2, model),
-					_1: A2(_rajasharan$elm_freehand_drawing$Update$sendPosition, _p2, model)
+					_0: model,
+					_1: A2(_rajasharan$elm_freehand_drawing$Update$sendPosition, _p1._0, model)
 				};
 			case 'TouchEnd':
 				return {
 					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$Update$stop(model),
+					_0: model,
 					_1: _rajasharan$elm_freehand_drawing$Update$sendCancel(model)
 				};
-			case 'Listen':
+			default:
 				return {
 					ctor: '_Tuple2',
 					_0: A2(
 						_rajasharan$elm_freehand_drawing$Clients$drawClient,
 						_rajasharan$elm_freehand_drawing$Decoders$decodeSocketMsg(_p1._0),
 						model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
-			case 'OnHoverServer':
-				return {
-					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$External$onHoverServer(model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
-			case 'OnHoverClear':
-				return {
-					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$External$onHoverClear(model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
-			case 'CancelHover':
-				return {
-					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$External$cancelHover(model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
-			case 'ClearAllDrawings':
-				return {
-					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$External$clearAll(model),
-					_1: _rajasharan$elm_freehand_drawing$Update$sendClearAll(model)
-				};
-			case 'ShowServerModal':
-				return {
-					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$External$showServerModal(model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
-			case 'SaveTransientServer':
-				return {
-					ctor: '_Tuple2',
-					_0: A2(_rajasharan$elm_freehand_drawing$External$saveTransientServer, _p1._0, model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
-			case 'SaveServer':
-				return {
-					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$External$saveServer(model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
-			case 'CloseServerModal':
-				return {
-					ctor: '_Tuple2',
-					_0: _rajasharan$elm_freehand_drawing$External$closeServerModal(model),
-					_1: _rajasharan$elm_freehand_drawing$Utils$nop
-				};
-			default:
-				return {
-					ctor: '_Tuple2',
-					_0: A2(_rajasharan$elm_freehand_drawing$External$enterKeyPressed, _p1._0, model),
 					_1: _rajasharan$elm_freehand_drawing$Utils$nop
 				};
 		}
@@ -14665,7 +14340,7 @@ var _rajasharan$elm_freehand_drawing$Views$githubRibbon = A2(
 	_elm_lang$html$Html$a,
 	_elm_lang$core$Native_List.fromArray(
 		[
-			_elm_lang$html$Html_Attributes$href('https://github.com/rajasharan/elm-freehand-drawing')
+			_elm_lang$html$Html_Attributes$href('https://github.com/rajasharan/elm-mice')
 		]),
 	_elm_lang$core$Native_List.fromArray(
 		[
@@ -14688,162 +14363,6 @@ var _rajasharan$elm_freehand_drawing$Views$githubRibbon = A2(
 			_elm_lang$core$Native_List.fromArray(
 				[]))
 		]));
-var _rajasharan$elm_freehand_drawing$Views$countShape = function (shape) {
-	return A2(
-		_elm_lang$core$List$map,
-		function (x) {
-			return _elm_lang$core$List$length(x);
-		},
-		shape);
-};
-var _rajasharan$elm_freehand_drawing$Views$showServerModal = function (model) {
-	var active = model.ext.showServerModal ? 'is-active' : '';
-	return A2(
-		_elm_lang$html$Html$div,
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$html$Html_Attributes$class(
-				A2(_elm_lang$core$Basics_ops['++'], 'modal ', active))
-			]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				A2(
-				_elm_lang$html$Html$div,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Attributes$class('modal-background'),
-						_elm_lang$html$Html_Events$onClick(_rajasharan$elm_freehand_drawing$Types$CloseServerModal)
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[])),
-				A2(
-				_elm_lang$html$Html$div,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Attributes$class('modal-card')
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						A2(
-						_elm_lang$html$Html$header,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_elm_lang$html$Html_Attributes$class('modal-card-head')
-							]),
-						_elm_lang$core$Native_List.fromArray(
-							[
-								A2(
-								_elm_lang$html$Html$p,
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html_Attributes$class('modal-card-title')
-									]),
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html$text('Enter <server-ip>:<port> to connect')
-									]))
-							])),
-						A2(
-						_elm_lang$html$Html$section,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_elm_lang$html$Html_Attributes$class('modal-card-body')
-							]),
-						_elm_lang$core$Native_List.fromArray(
-							[
-								A2(
-								_elm_lang$html$Html$p,
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html_Attributes$class('control has-addons')
-									]),
-								_elm_lang$core$Native_List.fromArray(
-									[
-										A2(
-										_elm_lang$html$Html$span,
-										_elm_lang$core$Native_List.fromArray(
-											[
-												_elm_lang$html$Html_Attributes$class('button is-success'),
-												_elm_lang$html$Html_Attributes$disabled(true)
-											]),
-										_elm_lang$core$Native_List.fromArray(
-											[
-												_elm_lang$html$Html$text('ws://')
-											])),
-										A2(
-										_elm_lang$html$Html$input,
-										_elm_lang$core$Native_List.fromArray(
-											[
-												_elm_lang$html$Html_Attributes$class('input'),
-												_elm_lang$html$Html_Attributes$type$('text'),
-												_elm_lang$html$Html_Attributes$placeholder('<server-ip>:<port>'),
-												_elm_lang$html$Html_Events$onInput(_rajasharan$elm_freehand_drawing$Types$SaveTransientServer),
-												A2(
-												_elm_lang$html$Html_Events$on,
-												'keyup',
-												_rajasharan$elm_freehand_drawing$Decoders$enterKeyDecoder(_elm_lang$html$Html_Events$keyCode))
-											]),
-										_elm_lang$core$Native_List.fromArray(
-											[]))
-									]))
-							])),
-						A2(
-						_elm_lang$html$Html$footer,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_elm_lang$html$Html_Attributes$class('modal-card-foot')
-							]),
-						_elm_lang$core$Native_List.fromArray(
-							[
-								A2(
-								_elm_lang$html$Html$a,
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html_Attributes$class('button is-primary'),
-										_elm_lang$html$Html_Events$onClick(_rajasharan$elm_freehand_drawing$Types$SaveServer)
-									]),
-								_elm_lang$core$Native_List.fromArray(
-									[
-										_elm_lang$html$Html$text('Connect Now')
-									]))
-							]))
-					]))
-			]));
-};
-var _rajasharan$elm_freehand_drawing$Views$onHoverClear = function (model) {
-	return model.ext.onHoverClear ? A2(
-		_elm_lang$html$Html$span,
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$html$Html_Attributes$class('tag')
-			]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$html$Html$text('Clear Screen')
-			])) : A2(
-		_elm_lang$html$Html$span,
-		_elm_lang$core$Native_List.fromArray(
-			[]),
-		_elm_lang$core$Native_List.fromArray(
-			[]));
-};
-var _rajasharan$elm_freehand_drawing$Views$onHoverServer = function (model) {
-	return model.ext.onHoverServer ? A2(
-		_elm_lang$html$Html$span,
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$html$Html_Attributes$class('tag')
-			]),
-		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$html$Html$text('Connect to Server')
-			])) : A2(
-		_elm_lang$html$Html$span,
-		_elm_lang$core$Native_List.fromArray(
-			[]),
-		_elm_lang$core$Native_List.fromArray(
-			[]));
-};
 var _rajasharan$elm_freehand_drawing$Views$banner = function (model) {
 	return _evancz$elm_graphics$Collage$toForm(
 		A4(
@@ -14863,38 +14382,48 @@ var _rajasharan$elm_freehand_drawing$Views$banner = function (model) {
 						40,
 						_evancz$elm_graphics$Text$monospace(
 							_evancz$elm_graphics$Text$bold(
-								_evancz$elm_graphics$Text$fromString('Freehand Drawing'))))))));
+								_evancz$elm_graphics$Text$fromString('Move all your mice !!!'))))))));
 };
 var _rajasharan$elm_freehand_drawing$Views$drawCanvas = function (m) {
-	var h = m.size.height;
-	var w = m.size.width;
-	var clientShapeList = A2(
+	var positions = A2(
 		_elm_lang$core$List$map,
 		function (c) {
-			return c.shape;
+			return c.position;
 		},
 		m.clients);
-	var clientPathList = A2(
-		_elm_lang$core$List$map,
-		function (s) {
-			return A2(_elm_lang$core$List$map, _evancz$elm_graphics$Collage$path, s);
-		},
-		clientShapeList);
-	var clientFormsList = A2(
-		_elm_lang$core$List$map,
-		function (p) {
+	var h = m.size.height;
+	var w = m.size.width;
+	var img = F2(
+		function (x, y) {
 			return A2(
-				_elm_lang$core$List$map,
-				_evancz$elm_graphics$Collage$traced(_evancz$elm_graphics$Collage$defaultLine),
-				p);
+				_evancz$elm_graphics$Element$opacity,
+				0.3,
+				A4(
+					_evancz$elm_graphics$Element$container,
+					w,
+					h,
+					A2(
+						_evancz$elm_graphics$Element$middleAt,
+						_evancz$elm_graphics$Element$absolute(x + ((w / 2) | 0)),
+						_evancz$elm_graphics$Element$absolute(((h / 2) | 0) - y)),
+					A3(_evancz$elm_graphics$Element$image, 24, 24, 'pointer.png')));
+		});
+	var imgs = A2(
+		_elm_lang$core$List$map,
+		function (_p0) {
+			var _p1 = _p0;
+			return A2(
+				img,
+				_elm_lang$core$Basics$round(_p1._0),
+				_elm_lang$core$Basics$round(_p1._1));
 		},
-		clientPathList);
-	var flattenClientForm = _elm_lang$core$List$concat(clientFormsList);
-	var paths = A2(_elm_lang$core$List$map, _evancz$elm_graphics$Collage$path, m.shape);
+		positions);
 	var forms = A2(
 		_elm_lang$core$List$map,
-		_evancz$elm_graphics$Collage$traced(_evancz$elm_graphics$Collage$defaultLine),
-		paths);
+		function (e) {
+			return _evancz$elm_graphics$Collage$toForm(e);
+		},
+		imgs);
 	return A2(
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
@@ -14917,9 +14446,8 @@ var _rajasharan$elm_freehand_drawing$Views$drawCanvas = function (m) {
 						{stopPropagation: true, preventDefault: true},
 						_rajasharan$elm_freehand_drawing$Decoders$touchMoveDecoder),
 						A2(_elm_lang$html$Html_Events$on, 'touchend', _rajasharan$elm_freehand_drawing$Decoders$touchEndDecoder),
-						A2(_elm_lang$html$Html_Events$on, 'mousedown', _rajasharan$elm_freehand_drawing$Decoders$mouseStartDecoder),
 						A2(_elm_lang$html$Html_Events$on, 'mousemove', _rajasharan$elm_freehand_drawing$Decoders$mouseMoveDecoder),
-						A2(_elm_lang$html$Html_Events$on, 'mouseup', _rajasharan$elm_freehand_drawing$Decoders$mouseEndDecoder)
+						A2(_elm_lang$html$Html_Events$on, 'mouseleave', _rajasharan$elm_freehand_drawing$Decoders$mouseEndDecoder)
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
@@ -14929,54 +14457,10 @@ var _rajasharan$elm_freehand_drawing$Views$drawCanvas = function (m) {
 							w,
 							h,
 							A2(
-								_elm_lang$core$Basics_ops['++'],
-								A2(
-									_elm_lang$core$List_ops['::'],
-									_rajasharan$elm_freehand_drawing$Views$banner(m),
-									forms),
-								flattenClientForm)))
+								_elm_lang$core$List_ops['::'],
+								_rajasharan$elm_freehand_drawing$Views$banner(m),
+								forms)))
 					])),
-				A2(
-				_elm_lang$html$Html$div,
-				_elm_lang$core$Native_List.fromArray(
-					[
-						_elm_lang$html$Html_Attributes$class('icons'),
-						_elm_lang$html$Html_Events$onMouseOut(_rajasharan$elm_freehand_drawing$Types$CancelHover)
-					]),
-				_elm_lang$core$Native_List.fromArray(
-					[
-						A2(
-						_elm_lang$html$Html$div,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_elm_lang$html$Html_Events$onMouseOver(_rajasharan$elm_freehand_drawing$Types$OnHoverServer),
-								_elm_lang$html$Html_Events$onClick(_rajasharan$elm_freehand_drawing$Types$ShowServerModal)
-							]),
-						_elm_lang$core$Native_List.fromArray(
-							[
-								A2(
-								_jystic$elm_font_awesome$FontAwesome$server,
-								A3(_elm_lang$core$Color$rgb, 0, 0, 0),
-								24),
-								_rajasharan$elm_freehand_drawing$Views$onHoverServer(m)
-							])),
-						A2(
-						_elm_lang$html$Html$div,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_elm_lang$html$Html_Events$onMouseOver(_rajasharan$elm_freehand_drawing$Types$OnHoverClear),
-								_elm_lang$html$Html_Events$onClick(_rajasharan$elm_freehand_drawing$Types$ClearAllDrawings)
-							]),
-						_elm_lang$core$Native_List.fromArray(
-							[
-								A2(
-								_jystic$elm_font_awesome$FontAwesome$eraser,
-								A3(_elm_lang$core$Color$rgb, 0, 0, 0),
-								24),
-								_rajasharan$elm_freehand_drawing$Views$onHoverClear(m)
-							]))
-					])),
-				_rajasharan$elm_freehand_drawing$Views$showServerModal(m),
 				_rajasharan$elm_freehand_drawing$Views$githubRibbon
 			]));
 };

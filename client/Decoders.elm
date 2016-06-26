@@ -43,9 +43,6 @@ mouseMoveDecoder = Json.map TouchMove (positionDecoder Mouse)
 mouseEndDecoder : Decoder Msg
 mouseEndDecoder = touchEndDecoder
 
-enterKeyDecoder : Decoder Int -> Decoder Msg
-enterKeyDecoder keyCode = Json.map EnterKey keyCode
-
 decodePoint : String -> Maybe (Float, Float)
 decodePoint point =
     let
@@ -61,7 +58,6 @@ decodeSocketMsg message =
     <| oneOf [ object4 SocketMsg ("id" := int) ("kind" := initial) (succeed 0) (succeed 0)
              , object4 SocketMsg ("id" := int) ("kind" := point) ("x" := float) ("y" := float)
              , object4 SocketMsg ("id" := int) ("kind" := cancel) (succeed 0) (succeed 0)
-             , object4 SocketMsg ("id" := int) ("kind" := clearAll) (succeed 0) (succeed 0)
              ]
 
 initial : Decoder SocketKind
@@ -82,11 +78,5 @@ cancel : Decoder SocketKind
 cancel = string `andThen`
              (\s -> case s of
                       "cancel" -> succeed Cancel
-                      _ -> fail <| "Server sent wrong kind: " ++ s
-             )
-clearAll : Decoder SocketKind
-clearAll = string `andThen`
-             (\s -> case s of
-                      "clearAll" -> succeed ClearAll
                       _ -> fail <| "Server sent wrong kind: " ++ s
              )

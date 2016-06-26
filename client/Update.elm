@@ -9,7 +9,6 @@ import Subscription exposing (send)
 import Decoders exposing (decodePoint, decodeSocketMsg)
 import Encoders exposing (encodeSocketMsg)
 import Clients exposing (drawClient)
-import External exposing (..)
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update message model =
@@ -17,48 +16,10 @@ update message model =
     case message of
         Window size -> ( setSize size model, nop )
         Error err -> ( model, print err )
-        TouchStart -> ( start model, nop )
-        TouchMove pos -> ( draw pos model, sendPosition pos model )
-        TouchEnd -> ( stop model, sendCancel model )
+        TouchStart -> ( model, nop )
+        TouchMove pos -> ( model, sendPosition pos model )
+        TouchEnd -> ( model, sendCancel model )
         Listen str -> ( drawClient (decodeSocketMsg str) model, nop )
-        OnHoverServer -> ( onHoverServer model, nop )
-        OnHoverClear -> ( onHoverClear model, nop )
-        CancelHover -> ( cancelHover model, nop )
-        ClearAllDrawings -> ( clearAll model, sendClearAll model )
-        ShowServerModal -> ( showServerModal model, nop )
-        SaveTransientServer server -> ( saveTransientServer server model, nop )
-        SaveServer -> ( saveServer model, nop )
-        CloseServerModal -> ( closeServerModal model, nop )
-        EnterKey keyCode -> ( enterKeyPressed keyCode model, nop )
-
-start : Model -> Model
-start model =
-    --Debug.log "touch:start"
-    { model | shape = [] :: model.shape
-            , moving = True
-    }
-
-stop : Model -> Model
-stop model =
-    { model | shape = [] :: model.shape
-            , moving = False
-    }
-
-draw : Mouse.Position -> Model -> Model
-draw pos model =
-    let
-        --p = Debug.log "on:touch" pos
-        --m = Debug.log "on:touch:model" model
-        point = convertMouseToCanvasCoord pos model.size
-    in
-        if model.moving then
-            addPointToModel point model
-        else
-            model
-
-addPointToModel : (Float, Float) -> Model -> Model
-addPointToModel point model =
-    { model | shape = modifyShape point model.shape }
 
 sendPosition : Mouse.Position -> Model -> Cmd Msg
 sendPosition pos m =
@@ -66,13 +27,8 @@ sendPosition pos m =
         normalizePoint' = normalizePoint m.size
         (x, y) = normalizePoint' <| convertMouseToCanvasCoord pos m.size
     in
-        if m.moving then
-            send m.server <| encodeSocketMsg {id = m.id, kind = Point, x = x, y = y }
-        else
-            nop
+        send m.server <| encodeSocketMsg {id = m.id, kind = Point, x = x, y = y }
 
 sendCancel : Model -> Cmd Msg
-sendCancel m = send m.server <| encodeSocketMsg {id = m.id, kind = Cancel, x = 0, y = 0}
-
-sendClearAll : Model -> Cmd Msg
-sendClearAll m = send m.server <| encodeSocketMsg {id = m.id, kind = ClearAll, x = 0, y = 0}
+sendCancel m =
+    send m.server <| encodeSocketMsg {id = m.id, kind = Cancel, x = 0.0, y = 0.0}

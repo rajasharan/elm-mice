@@ -4,7 +4,6 @@ import List.Extra exposing (..)
 
 import Types exposing (..)
 import Utils exposing (..)
-import External exposing (clearAll)
 
 drawClient : Result String SocketMsg -> Model -> Model
 drawClient result model =
@@ -19,45 +18,37 @@ drawClient result model =
 drawClient' : SocketMsg -> Model -> Model
 drawClient' socket model =
     case socket.kind of
-        Initial -> { model | clients = resetClient socket.id model.clients, id = socket.id }
-        Cancel -> { model | clients = resetClient socket.id model.clients }
+        Initial -> { model | clients = addClient socket.id model.clients, id = socket.id }
+        Cancel -> { model | clients = deleteClient socket.id model.clients }
         Point -> addPointToClient socket.id socket.x socket.y model
-        ClearAll -> clearAll model
 
-resetClient : Id -> List Client -> List Client
-resetClient id clients =
+addClient : Id -> List Client -> List Client
+addClient id clients =
     let
         c' = find (\c -> c.id == id) clients 
     in
         case c' of
-            Nothing -> { id = id, shape = [] } :: clients
-            Just client ->
-                replaceIf
-                    (\c -> c.id == id)
-                    { id = id, shape = [] :: client.shape }
-                    clients
+            Nothing -> { id = id, position = (-9999.0, -9999.0) } :: clients
+            Just client -> clients
+
+deleteClient : Id -> List Client -> List Client
+deleteClient id clients = deleteIf (\c -> c.id == id) clients
 
 addPointToClient : Id -> Float -> Float -> Model -> Model
 addPointToClient id x y model =
     let
-        point = denormalizePoint model.size (x, y)
+        point = denormalizePoint model.size (x, y) --|> Debug.log "newpoint"
     in
-        { model | clients = modifyClient id point model.clients }
+        { model | clients = modifyClient id point model.clients } --|> Debug.log "add"
 
 modifyClient : Id -> (Float, Float) -> List Client -> List Client
 modifyClient id point clients =
     let
-        --i' = Debug.log "modifyClient:id" id
+        --p = point |> Debug.log "p"
+        --i = id |> Debug.log "id"
         c' = find (\c -> c.id == id) clients
     in
         case c' of
-            Nothing -> {id = id, shape = []}::clients
+            Nothing -> { id = id, position = point } :: clients
             Just client ->
-                replaceIf
-                    (\c -> c.id == id)
-                    (replacePointInClient point client)
-                    clients
-
-replacePointInClient : (Float, Float) -> Client -> Client
-replacePointInClient point client =
-    { client | shape = modifyShape point client.shape }
+                replaceIf (\c -> c.id == id) { client | position = point } clients
